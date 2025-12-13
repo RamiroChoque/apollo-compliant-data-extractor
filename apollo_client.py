@@ -103,15 +103,71 @@ class ApolloClient:
 
         base = domain.split(".")[0]
         return base.replace("-", " ").title()
+    
+    def infer_job_title(self, person, name):
+        if person.get("title"):
+            return person.get("title")
+        return None
+
 
 
     # ---------- SIMULATED MOBILE LOGIC ----------
     def simulate_mobile(self, seed):
+        """
+        Generating a deterministic, numeric-only simulated mobile number.
+        Used only when Apollo enrichment APIs are unavailable.
+        """
         if self.mobile_credits <= 0:
             return None, False
-        phone = f"+1-202-555-{seed[:4]}"
+
+        # Convert hash seed to digits only
+        digits = "".join(filter(str.isdigit, seed))
+
+        # Ensure reasonable length (10–12 digits)
+        mobile = digits[:10]
+        if len(mobile) < 10:
+            mobile = mobile.ljust(10, "0")
+
         self.mobile_credits -= 1
-        return phone, True
+        return mobile, False
+
+    # ---------- SIMULATED Mail LOGIC ----------
+    def simulate_email(self, first_name, domain):
+        """
+        Generating a deterministic, realistic-looking email address.
+        Used only when Apollo enrichment APIs are unavailable.
+        """
+        if not first_name or not domain:
+            return None
+
+        local = first_name.strip().lower()
+        domain = domain.strip().lower()
+
+        return f"{local}@{domain}"
+
+    #Helper for job_title extraction
+    def extract_job_title(self, person):
+        """
+        Safely extract job title from various Apollo response shapes.
+        """
+        if not person:
+            return None
+
+        # Most common
+        if person.get("title"):
+            return person["title"]
+
+        # Sometimes used
+        if person.get("current_title"):
+            return person["current_title"]
+
+        # Fallback: employment history
+        history = person.get("employment_history", [])
+        for job in history:
+            if job.get("current") and job.get("title"):
+                return job["title"]
+
+        return None
 
     # ---------- UNIFIED PIPELINE ----------
     def process(self, linkedin_url, name, domain):
@@ -124,7 +180,7 @@ class ApolloClient:
                 return {
                     "first_name": enriched.get("first_name"),
                     "last_name": enriched.get("last_name"),
-                    "job_title": enriched.get("title"),
+                    "job_title": self.extract_job_title(person),
                     "company_name": enriched.get("organization", {}).get("name"),
                     "company_website": enriched.get("organization", {}).get("website"),
                     "industry": enriched.get("organization", {}).get("industry"),
@@ -147,6 +203,11 @@ class ApolloClient:
         company_name = company.get("name") or self.infer_company_from_domain(domain)
         company_website = company.get("website") or (f"https://{domain}" if domain else None)
 
+        email = self.simulate_email(
+        person.get("first_name") or (name.split()[0] if name else None),
+        domain
+)
+
         return {
             "first_name": person.get("first_name") or (name.split()[0] if name else None),
             "last_name": person.get("last_name") or (name.split()[-1] if name else None),
@@ -154,7 +215,7 @@ class ApolloClient:
             "company_name": company_name,
             "company_website": company_website,
             "industry": company.get("industry"),
-            "email": None,
+            "email": email,
             "email_verified": False,
             "mobile_phone": mobile,
             "mobile_verified": mobile_verified,

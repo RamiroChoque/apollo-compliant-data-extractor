@@ -80,16 +80,27 @@ When Apollo Person Enrichment APIs are available:
 
 ### Fallback Mode – Search-Based Discovery (Free / Trial API)
 
-When Person Enrichment APIs are **not available due to API entitlement restrictions**:
+1. When Person Enrichment APIs are **not available due to API entitlement restrictions**:
 
-- The pipeline automatically switches to:
-  - `mixed_people/organization_top_people` for person discovery
-  - `organizations/enrich` for company metadata
-- Mobile numbers are **simulated deterministically**
-- Mobile credit usage is **tracked and budgeted**
-- Output schema remains **identical**
+   - The pipeline automatically switches to:
+     - `mixed_people/organization_top_people` for person discovery
+     - `organizations/enrich` for company metadata
 
+   - Mobile numbers are **simulated deterministically**
 
+   - Mobile credit usage is **tracked and budgeted**
+
+   - Output schema remains **identical**
+
+2. When organization enrichment is unavailable, the pipeline deterministically infers the company name and website from the provided company domain to maintain output completeness without introducing unverified data.
+
+3. Simulated mobile numbers are numeric-only placeholders used solely to demonstrate credit-aware control flow when enrichment APIs are unavailable.
+
+4. Fallback email addresses are deterministically inferred from first name and company domain and are explicitly marked as unverified placeholders.
+
+5. Job titles and industries are populated from Apollo APIs when available and left blank or conservatively inferred when enrichment data is unavailable.
+
+6. Industry is populated only when available via Apollo enrichment APIs. 
 
 This ensures:
 
