@@ -1,0 +1,46 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+
+#Cache files
+.apollocache/
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Environment variables
+.env
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Output files
+# sample_output.csv
+
+# Python build artifacts
+build/
+dist/
+*.egg-info/
+
+# Temporary files
+tempCodeRunnerFile.py
+
+#Trial and error files
+test.py
+contacts_upload.csv
+
+#Markdown files
+*.md_backup
+Assignment_Requirements.md
+Apollo.io Data Extraction Plan (Updated).md
