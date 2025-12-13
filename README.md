@@ -1,6 +1,6 @@
 ------
 
-# # Apollo API Data Extraction
+# Apollo API Data Extraction
 
 ## TL;DR
 - Uses only official Apollo.io APIs (no scraping)
