@@ -4,7 +4,7 @@ import requests
 import hashlib
 
 BASE = "https://api.apollo.io/api/v1"
-API_KEY = os.getenv("ruOgohaH3SwKwbGhoDuXeA")
+API_KEY = os.getenv("Apollo_API_Key_Here")
 
 HEADERS = {
     "X-Api-Key": API_KEY,
